@@ -1,0 +1,35 @@
+<section>
+
+
+  <div >
+    <h2>{{ car.make }} {{ car.model }} ({{ car.id }})</h2>
+    <form [formGroup]="serviceForm" (ngSubmit)="addService()">
+      <label>
+        Part:
+        <input formControlName="part" required />
+      </label>
+      <label>
+        Cost:
+        <input formControlName="cost" required type="number" />
+      </label>
+      <button type="submit">Add Service</button>
+    </form>
+
+
+
+
+
+    <h3 >Services</h3>
+
+    <button (click)="isSectionCollapsed = !isSectionCollapsed">
+      {{ isSectionCollapsed ? 'expand' : 'collapse' }}
+    </button>
+
+    <ul *ngIf="!isSectionCollapsed">
+      <li *ngFor="let service of car.services">
+        {{ service.part }} - {{ service.cost }}
+      </li>
+    </ul>
+  </div>
+</section>
+

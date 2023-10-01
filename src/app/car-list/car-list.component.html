@@ -1,0 +1,29 @@
+<section>
+
+
+  <div>
+    <form [formGroup]="carForm" (ngSubmit)="addCar()">
+      <label>
+        ID:
+        <input formControlName="id" required />
+      </label>
+      <label>
+        Model:
+        <input formControlName="model" required />
+      </label>
+      <label>
+        Make:
+        <input formControlName="make" required />
+      </label>
+      <button type="submit">Add Car</button>
+    </form>
+    <button (click)="isSectionCollapsed = !isSectionCollapsed">
+      {{ isSectionCollapsed ? 'expand' : 'collapse' }}
+    </button>
+    <ul *ngIf="!isSectionCollapsed">
+      <li *ngFor="let car of cars">
+        <app-car-details [car]="car"></app-car-details>
+      </li>
+    </ul>
+  </div>
+</section>
